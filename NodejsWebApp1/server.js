@@ -21,7 +21,7 @@ http.createServer(function (req, res) {
     else {
         fs.readFile('./IndexPage.html', function (err, file) {
             if (err) {
-                // write an error response or nothing here  
+                // write an error response or nothing here  and another one here for github 
                 return;
             }
             res.writeHead(200, { 'Content-Type': 'text/html' });
