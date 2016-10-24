@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Hello World Page!</title>
+
+    <script type="text/javascript">
+		
+        function listener(event) {
+            // Not going to worry about origin domain for now
+            //if (event.origin !== "http://javascript.info")
+            //    return;
+            document.getElementById("CustNameDiv").innerHTML = "received: " + event.data;
+            SendAjaxRequest();
+        };
+
+        if (window.addEventListener) {
+            addEventListener("message", listener, false);
+        } else {
+            attachEvent("onmessage", listener);
+        }
+	
+        function SendAjaxRequest() {
+
+            document.getElementById("CreditReportDiv").innerHTML = "Sending req: ";
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                    document.getElementById("CreditReportDiv").innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET", "http://localhost:1337/GetCustomerData", true);
+            xmlhttp.send();
+        }
+    </script>
+
+
+
+</head>
+<body>
+
+
+    <div id="CustNameDiv"> Hello World DawgZZ! </div>
+    <div id="CreditReportDiv"> Credit data should go here </div>
+
+</body>
+</html>
