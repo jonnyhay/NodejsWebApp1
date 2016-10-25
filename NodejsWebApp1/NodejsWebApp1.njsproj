@@ -34,6 +34,7 @@
     <Compile Include="porthole.min.js" />
     <Compile Include="server.js" />
     <Content Include="IndexPage.html" />
+    <Content Include="JonnyLender.html" />
     <Content Include="package.json" />
     <Content Include="proxy.html" />
     <Content Include="README.md" />

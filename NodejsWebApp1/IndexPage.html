@@ -29,7 +29,9 @@
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
                     document.getElementById("CreditReportDiv").innerHTML = xmlhttp.responseText;
+                    parent.postMessage(xmlhttp.responseText, "*");
                 }
+
             }
             xmlhttp.open("GET", "http://localhost:1337/GetCustomerData", true);
             xmlhttp.send();

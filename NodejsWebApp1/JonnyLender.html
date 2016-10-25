@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script>
+		// document.domain = document.domain;
+    </script>
+
+    <script type="text/javascript" src="jquery-3.1.1.js"></script>
+    <script>
+
+	window.onload=function(){
+		console.log("hit init ");
+	}
+    </script>
+
+</head>
+
+<body>
+
+    <iframe id="extFrame" name="extFrame" src="http://localhost:1337/"></iframe>
+
+    <form name="custInfoForm">
+        <input type="text" name="msg" value="Your message" />
+        <input type="submit" />
+    </form>
+
+    <div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+    <script>
+        function listener(event) {
+            // Not going to worry about origin domain for now test comment here for github!
+            //if (event.origin !== "http://javascript.info")
+            //    return;
+            document.getElementById("div1").innerHTML = "received: " + event.data;
+        };
+
+        if (window.addEventListener) {
+            addEventListener("message", listener, false);
+        } else {
+            attachEvent("onmessage", listener);
+        }
+
+var win = document.getElementById("extFrame").contentWindow;
+		document.forms.custInfoForm.onsubmit = function()
+		{
+			console.log("hit submit w/ val:" + this.elements.msg.value);
+			win.postMessage(
+				this.elements.msg.value,
+				"*" // no restrictions on receiving iframe domain
+			)
+			return false
+		}
+    </script>
+
+</body>
+</html>
