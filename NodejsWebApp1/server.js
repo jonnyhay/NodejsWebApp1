@@ -1,6 +1,7 @@
 ﻿var http = require('http');
 var url = require('url');
 var fs = require('fs');
+var os = require("os");
 var port = process.env.port || 1337;
 
 var choices = ["testreply1", "testreply2", "testreply3", "testreply4", "testreply5"];
@@ -11,11 +12,19 @@ http.createServer(function (req, res) {
 
     if (path == "/GetCustomerData") {
         console.log("ajax req received");
-        var string = choices[Math.floor(Math.random() * choices.length)];
-        console.log("string '" + string + "' chosen");
+        var resString = choices[Math.floor(Math.random() * choices.length)];
+        console.log("string '" + resString + "' chosen");
         res.writeHead(200, { "Content-Type": "text/plain" });
-        res.end(string);
+        res.end(resString);
         console.log("string sent");
+
+        // log 
+        fs.appendFile("./log_requests.txt", req.ip + "," + req.url + "," + resString + os.EOL, function (err) {
+        if (err) {
+            return console.log(err);
+        }
+            
+    }); 
     }
 
     else {

@@ -34,7 +34,9 @@
     <Compile Include="porthole.min.js" />
     <Compile Include="server.js" />
     <Content Include="IndexPage.html" />
+    <Content Include="JonnyHayNovaChallenge.docx" />
     <Content Include="JonnyLender.html" />
+    <Content Include="log_requests.txt" />
     <Content Include="package.json" />
     <Content Include="proxy.html" />
     <Content Include="README.md" />
