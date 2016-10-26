@@ -47,7 +47,7 @@
 		document.forms.custInfoForm.onsubmit = function()
 		{
 		    var customerInfo = this.elements.country.value + "," + this.elements.name.value + "," + this.elements.email.value + "," + this.elements.passport.value;
-			console.log("hit submit w/ val:" + customerInfo);
+			//console.log("hit submit w/ val:" + customerInfo);
 			win.postMessage(
 				customerInfo,
 				"*" // no restrictions on receiving iframe domain

@@ -31,18 +31,20 @@ Date.prototype.timeNow = function () {
 http.createServer(function (req, res) {
 
     var path = url.parse(req.url).pathname;
-    console.log(req.url);
-    console.log(path);
+    //console.log(req.url);
+    //console.log(path);
     if (path == "/GetCustomerData") {
         
+        setTimeout(function () { /*do nothing*/ }, 3000); //Compiling data
+        
         customerInfo = getParameterByName('cusInfo', req.url);
-        console.log("ajax req received: " + customerInfo);
+        //console.log("ajax req received: " + customerInfo);
 
         var resString = choices[Math.floor(Math.random() * choices.length)];
-        console.log("string '" + resString + "' chosen");
+        //console.log("string '" + resString + "' chosen");
         res.writeHead(200, { "Content-Type": "text/plain" });
         res.end(resString);
-        console.log("string sent");
+        //console.log("string sent");
         var datetime = new Date().today() + " @ " + new Date().timeNow();
         // log 
         fs.appendFile("./log_requests.txt", req.ip + "," + datetime + "," + resString + "," + customerInfo + os.EOL, function (err) {

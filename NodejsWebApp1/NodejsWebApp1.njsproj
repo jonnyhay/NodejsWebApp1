@@ -30,7 +30,6 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="porthole.js" />
     <Compile Include="porthole.min.js" />
     <Compile Include="server.js" />
     <Content Include="IndexPage.html" />
