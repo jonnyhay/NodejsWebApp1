@@ -19,7 +19,10 @@
     <iframe id="extFrame" name="extFrame" src="http://localhost:1337/"></iframe>
 
     <form name="custInfoForm">
-        <input type="text" name="msg" value="Your message" />
+        <input type="text" name="country"   value="Country" />
+        <input type="text" name="name"      value="Name" />
+        <input type="text" name="email"     value="Email" />
+        <input type="text" name="passport"  value="Passport" />
         <input type="submit" />
     </form>
 
@@ -30,6 +33,7 @@
             // Not going to worry about origin domain for now test comment here for github!
             //if (event.origin !== "http://javascript.info")
             //    return;
+
             document.getElementById("div1").innerHTML = "received: " + event.data;
         };
 
@@ -39,12 +43,13 @@
             attachEvent("onmessage", listener);
         }
 
-var win = document.getElementById("extFrame").contentWindow;
+        var win = document.getElementById("extFrame").contentWindow;
 		document.forms.custInfoForm.onsubmit = function()
 		{
-			console.log("hit submit w/ val:" + this.elements.msg.value);
+		    var customerInfo = this.elements.country.value + "," + this.elements.name.value + "," + this.elements.email.value + "," + this.elements.passport.value;
+			console.log("hit submit w/ val:" + customerInfo);
 			win.postMessage(
-				this.elements.msg.value,
+				customerInfo,
 				"*" // no restrictions on receiving iframe domain
 			)
 			return false

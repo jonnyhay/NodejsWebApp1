@@ -12,7 +12,7 @@
             //if (event.origin !== "http://javascript.info")
             //    return;
             document.getElementById("CustNameDiv").innerHTML = "received: " + event.data;
-            SendAjaxRequest();
+            SendAjaxRequest(event.data);
         };
 
         if (window.addEventListener) {
@@ -21,7 +21,7 @@
             attachEvent("onmessage", listener);
         }
 	
-        function SendAjaxRequest() {
+        function SendAjaxRequest( data ) {
 
             document.getElementById("CreditReportDiv").innerHTML = "Sending req: ";
             var xmlhttp = new XMLHttpRequest();
@@ -33,7 +33,7 @@
                 }
 
             }
-            xmlhttp.open("GET", "http://localhost:1337/GetCustomerData", true);
+            xmlhttp.open("GET", "http://localhost:1337/GetCustomerData?cusInfo=" + data, true);
             xmlhttp.send();
         }
     </script>

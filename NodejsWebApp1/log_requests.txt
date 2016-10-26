@@ -1,3 +1,4 @@
-undefined,/GetCustomerData,testreply4
-undefined,/GetCustomerData,testreply4
-undefined,/GetCustomerData,testreply4
+IP, DateTime, Response, Country, Name, Email, Passport
+undefined,,CreditScore800,China,Xu Hue,Hue@badoo.com,123459876
+undefined,,CreditScore560,China,Chen Lu,Lu@baidu.com,123459876
+undefined,LastSync: 25/10/2016 @ 22:07:54,CreditScore560,UK,John Fitz,fitz@live.com,123234345
